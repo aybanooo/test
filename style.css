@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;	
+  background-image: url("BG.png");
 }
 
 a {
@@ -9,6 +10,7 @@ a {
 
 .calcu {
   display: inline-block;
+  background-color: white;
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.2);
