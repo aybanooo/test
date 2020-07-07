@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.calcu {
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.calcu label {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.calcu input {
+  margin: 5px 0px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid slategray;
+  padding: 5px;
+}
+
+.calcu > input:nth-child(5) {
+  display: block;
+  width: calc(100% - 10px);
+}
+
+.calcu select {
+  padding: 5px 0;
+}
+
+.calcu button {
+  display: block;
+  background-color: rgb(150, 150, 150);
+  color: white;
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0px;
+  border: none;
+  cursor: pointer;
+}
+
+.calcu   button:hover {
+  background-color: rgb(100, 100, 100);
+}
+
+center + label {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  padding: 5PX 0px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ETA Calculator</title>
+  <link type='text/css' rel='stylesheet' href='style.css' />
+</head>
+<body>
+  <div class="calcu">
+      <label>ETA of your downloaded file will be</label>
+      <center><h1 id="output">0s</h1></center>
+      <label id="speedLabel">at 0 Megabytes/Sec</label><br>
+      <input type="text" id="speed" placeholder="Internet speed in Megabits(Mbps)" onkeyup="calculate()">
+      <input type="text" id="size" placeholder="File size to download" onkeyup="calculate()">
+      <select id="sizeType" onchange="calculate()">
+        <option value="1">Byte</option>
+        <option value="2">KiloByte</option>
+        <option value="3">MegaByte</option>
+        <option value="4">GigaByte</option>
+        <option value="5">TeraByte</option>
+        <option value="6">PetaByte</option>
+      </select>
+  </div>
+</body>
+</html>
+
+<script>
+  var eOutput = document.getElementById('output');
+  var sizeType, output, size, speed, speedLabel;
+  var sizeInMegaByte;
+  function calculate() {
+    sizeType = document.getElementById('sizeType');
+    size = document.getElementById('size');
+    speed = document.getElementById('speed');
+    speedLabel = document.getElementById('speedLabel');
+    sizeInMegaByte = convertSizeInByte(size.value, sizeType.value);
+    output = Math.round(sizeInMegaByte / (speed.value / 8));
+    //eOutput.innerHTML = output;
+    eOutput.innerHTML = timeTypeCalculate(output);
+    speedLabel.innerHTML ="at " + (Math.round(((speed.value / 8) + Number.EPSILON) * 100) / 100) + " Megabytes/Sec";
+  }
+
+  function timeTypeCalculate(sec) {
+    var timeType = ['second/s','minute/s','hour/s','day/s','month/s'];
+    var timeDivision = sec;
+    var timeTypeCounter = 0;
+    ///*
+    while(timeDivision > 60) {
+      if(timeTypeCounter < 2) {
+        timeDivision = timeDivision / 60;
+        timeTypeCounter++;
+      }
+      else if (timeTypeCounter < 3) {
+        timeDivision = timeDivision / 24;
+        timeTypeCounter++;
+      }
+      else {
+        timeDivision = timeDivision / 30;
+        timeTypeCounter++;
+        break;
+      }
+    }
+    //*/
+    var a = (Math.round(timeDivision) == 0) ? "Instantly" : "~ " + Math.round(timeDivision) + " " + timeType[timeTypeCounter];
+    return(a);
+  }
+
+  function convertSizeInByte(size, option) {
+    var x = size;
+    //*
+    if(option == 1) {
+      x = size / Math.pow(1024, 2);
+    }
+    else if(option == 2) {
+      x = size / (1024);
+    }
+    else if(option == 3) {
+
+    }
+    else if(option == 4) {
+      x = size * 1024;
+    }
+    else if(option == 5) {
+      x = size * Math.pow(1024, 2);
+    }
+    else{
+      x = size * Math.pow(1024, 3);
+    }
+    //*/
+    return(x);
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+</script>
